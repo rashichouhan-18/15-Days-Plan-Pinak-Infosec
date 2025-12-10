@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    function greet(name) {
+        return `Hello, ${name}!`;
+    }
+    console.log(greet('World')); // Output: Hello, World!
+
+    const colors =['Red', 'Green', 'Blue', 'Yellow', 'Purple'];
+    console.log('Original Colors:', colors);
+
+    let User ={
+        name: 'Alice',
+        age: 30,
+        city: 'New York'
+    };
+    console.log('User Info:', User.name,);
+
+    let numbers =[5, 3, 8, 1, 2];
+    console.log('Original Numbers:', numbers);
+    numbers.pop(3);
+    console.log('After Pop:', numbers);
+    numbers.push(10);
+    console.log('Modified Numbers:', numbers);
+    numbers.sort((a, b) => a - b);
+    console.log('Sorted Numbers:', numbers);
+
+
+    const securityAlerts = [
+    { id: 1, title: 'SQL Injection attempt detected', severity: 'High', date: '2025-12-09' },
+    { id: 2, title: 'Unauthorized access attempt', severity: 'Critical', date: '2025-12-10' },
+    { id: 3, title: 'Port scan activity observed', severity: 'Medium', date: '2025-12-10' },
+    { id: 4, title: 'Malware signature matched', severity: 'High', date: '2025-12-10' },
+    { id: 5, title: 'Suspicious login pattern', severity: 'Medium', date: '2025-12-10' },
+    { id: 6, title: 'Cross-site scripting (XSS) vulnerability found', severity: 'Critical', date: '2025-12-10' }
+];
+
+console.log('Original Alerts:', securityAlerts);
+const sortedAlerts = securityAlerts.sort((a, b) => {
+    const severityOrder = { 'Critical': 1, 'High': 2, 'Medium': 3, 'Low': 4 };
+    if (severityOrder[a.severity] !== severityOrder[b.severity]) {
+        return severityOrder[a.severity] - severityOrder[b.severity];
+    }
+    return new Date(b.date) - new Date(a.date);
+});
+console.log('Sorted Alerts:', sortedAlerts);
+</script>
+</body>
+</html>
