@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Strength checker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-red-900 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-black w-full  max-w-md p-8 rounded-2xl shadow-xl">
+        <h2 class="text-3xl font-bold text-center text-white mb-6">Login</h2>
+
+        <div class="mb-5">
+            <label class="text-gray-300">Email</label>
+            <input type="email"
+                class="w-full mt-2 p-3 rounded-lg bg-gray-700 border border-gray-600 text-white outline-none focus:ring-2 focus:ring-white"
+                placeholder="Enter email"
+                oninput="checkEmail()">
+        </div>
+
+        <div class="mb-3">
+            <label class="text-gray-300">Password</label>
+            <input type="password" id="password"
+                class="w-full mt-2 p-3 rounded-lg bg-gray-700 border border-gray-600 text-white outline-none focus:ring-2 focus:ring-white"
+                placeholder="Enter password"
+                oninput="checkStrength()">
+        </div>
+
+        <p id="strengthText" class="text-center text-lg font-medium h-6"></p>
+
+        <div id="strengthBar" class="w-full h-2 bg-gray-600 rounded-full mt-2">
+            <div id="strengthFill" class="h-2 rounded-full"></div>
+        </div>
+
+        <button
+            class="mt-6 w-full bg-gray-600 hover:bg-red-900 text-white p-3 rounded-lg text-lg font-semibold transition ">
+            Login
+        </button>
+
+        <p class="text-center text-gray-400 mt-4">
+            Don't have an account?
+            <a href="#" class="text-blue-400">Register</a>
+        </p>
+
+    </div>
+
+    <script>
+        function checkEmail() {
+            const emailInput = document.getElementById("email");
+            const email = emailInput.value;
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (email.match(emailPattern)) {
+                emailInput.style.borderColor = "green";
+            } else {
+                emailInput.style.borderColor = "red";
+            }
+        }
+        function checkStrength() {
+            const pass = document.getElementById("password").value;
+            const strengthText = document.getElementById("strengthText");
+            const strengthFill = document.getElementById("strengthFill");
+
+            let strength = 0;
+
+            if (pass.length >= 8) strength++;
+            if (/[0-9]/.test(pass)) strength++;
+            if (/[A-Z]/.test(pass)) strength++;
+            if (/[^A-Za-z0-9]/.test(pass)) strength++;
+
+            if (strength === 0) {
+                strengthText.innerText = "";
+                strengthFill.style.width = "0";
+            } else if (strength === 1) {
+                strengthText.innerText = "Very Weak";
+                strengthText.style.color = "red";
+                strengthFill.style.width = "25%";
+                strengthFill.style.background = "red";
+            } else if (strength === 2) {
+                strengthText.innerText = "Weak";
+                strengthText.style.color = "orange";
+                strengthFill.style.width = "50%";
+                strengthFill.style.background = "orange";
+            } else if (strength === 3) {
+                strengthText.innerText = "Good";
+                strengthText.style.color = "yellow";
+                strengthFill.style.width = "75%";
+                strengthFill.style.background = "yellow";
+            } else if (strength === 4) {
+                strengthText.innerText = "Strong";
+                strengthText.style.color = "lightgreen";
+                strengthFill.style.width = "100%";
+                strengthFill.style.background = "lightgreen";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+    

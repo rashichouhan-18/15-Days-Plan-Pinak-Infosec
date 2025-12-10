@@ -1,0 +1,89 @@
+/* universal selector */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Type selector */
+body {
+font-family: Arial,  sans-serif;
+background-image: url(line-abstract-geometric-background_393744-280.avif);
+background-size: cover;
+background-position:center;
+background-repeat: no-repeat;
+
+}
+header{
+    background:#eb0404;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: solid;
+}
+nav{
+    background: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* descendant selector */
+nav a{
+    color: #eb0404;
+    margin: 0 15px;
+    text-decoration: none;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+/* class selector */
+.login-section{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.login-box{
+    background: white;
+    padding: 50px;
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: #eb0404;
+}
+.login-box h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+label{
+    margin-top: 10px;
+    font-weight: bold;
+}
+input{
+    padding: 10px ;
+    margin-top: 5px;
+    border: 1px solid #eb0404;
+    border-radius: 5px;
+}
+button{
+    margin-top: 20px;
+    padding: 10px;
+    background: #eb0404;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* pseudo-class selector */
+button:hover{
+    background: #eb0404;
+}
+footer{
+    margin-top:350px ;
+    text-align: center;
+    padding: 10px;
+    background: #eb0404;
+    color: white;
+}
