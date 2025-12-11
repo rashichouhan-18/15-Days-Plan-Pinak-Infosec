@@ -1,10 +1,8 @@
-/* universal selector */
-*{
+ *{
     margin: 0;
     padding: 0;
 }
 
-/* Type selector */
 body {
 font-family: Arial,  sans-serif;
 background-image: url(line-abstract-geometric-background_393744-280.avif);
@@ -26,7 +24,6 @@ nav{
     text-align: center;
 }
 
-/* descendant selector */
 nav a{
     color: #eb0404;
     margin: 0 15px;
@@ -35,7 +32,6 @@ nav a{
 nav a:hover{
     text-decoration: underline;
 }
-/* class selector */
 .login-section{
     display: flex;
     justify-content: center;
@@ -56,8 +52,10 @@ form{
     display: flex;
     flex-direction: column;
 }
-label{
-    margin-top: 10px;
+div{
+    margin-top: 20px;
+    padding: 10px;
+    /* margin-top: 10px 10px; */
     font-weight: bold;
 }
 input{
@@ -74,11 +72,13 @@ button{
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: solid;
 }
 
-/* pseudo-class selector */
 button:hover{
-    background: #eb0404;
+    background: white;
+    color: #eb0404;
+    border:1px  #eb0404 solid;
 }
 footer{
     margin-top:350px ;
@@ -86,4 +86,9 @@ footer{
     padding: 10px;
     background: #eb0404;
     color: white;
-}
+} 
+.alert {
+            color: red;
+            font-size: 12px;
+            margin-top: -5px;
+        }

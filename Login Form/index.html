@@ -17,20 +17,58 @@
         <section class="login-section">
             <div  class="login-box">
                 <h2>Login</h2>
-                <form>
-                    <label for="Email">Email</label><br>
-                    <input id="Email" type="email" placeholder="Enter email"><br>
-                 
-                    <label for="Password">Password</label><br>
-                    <input  id="Password" type="text" placeholder="Enter Password"><br>
+                <form id="myForm">
+                   <input type="email" id="email" placeholder="Email" required>
+                   <div id="email-error" class="alert"></div>
+
+                    <input type="password" id="password" placeholder="Password" required>
+                    <div id="password-error" class="alert"></div>
 
                     <button type="submit"> Submit</button>
+                    <button type="reset"> Reset</button>
+        
                 </form>
             </div>
         </section>
+    <script>
+        const form = document.getElementById("myForm");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const email = document.getElementById("email").value;
+            const pass = document.getElementById("password").value;
+            
+            let isValid = true;
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+            
+            const emailRegex = /^([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById("email-error").textContent = 
+                    "Invalid email address.";
+                isValid = false;
+            }
+            const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+            if (!passRegex.test(pass)) {
+                document.getElementById("password-error").textContent = 
+                    "Password must have 8+ chars, 1 uppercase, 1 number, 1 special char.";
+                isValid = false;
+            }
+            if (isValid) {
+                alert("Form submitted successfully!");
+                form.reset();
+            }
+
+        function resetErrors() {
+            document.getElementById("email-error").textContent = "";
+            document.getElementById("password-error").textContent = "";
+        }
+        });
+    </script>
+
+    
     </main>
     <footer> 
         <p>@ xyz Website</p>
     </footer>
 </body>
-</html>
+</html> 
