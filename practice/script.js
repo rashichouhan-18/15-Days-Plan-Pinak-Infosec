@@ -13,9 +13,11 @@ const initialData = [
 
 const STORAGE_KEY = 'userData';
 
+// Data Management
 const loadUsers = () => JSON.parse(localStorage.getItem(STORAGE_KEY)) || initialData;
 const saveUsers = (data) => localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 
+// Table View Rendering
 function renderTable(users) {
     const tableBody = document.getElementById('user-table-body');
     tableBody.innerHTML = users.map((u, i) => `
@@ -32,10 +34,12 @@ function renderTable(users) {
     `).join('');
 }
 
+// Card View Rendering
 function renderCards(users) {
     const grid = document.getElementById('card-grid');
     grid.innerHTML = users.map(u => `
         <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition border border-gray-100">
+            <div class="h-40 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400">Product Image</div>
             <h3 class="text-lg font-bold text-gray-800 mb-1">${u.name}</h3>
             <p class="text-sm text-gray-500 mb-2">${u.email}</p>
             <p class="text-xs font-semibold uppercase text-indigo-600 mb-4">${u.company.name}</p>
@@ -50,6 +54,7 @@ function renderCards(users) {
     `).join('');
 }
 
+// Search Logic
 function handleSearch() {
     const query = document.getElementById('search-input').value.toLowerCase();
     const allUsers = loadUsers();
@@ -69,6 +74,7 @@ function handleSearch() {
     }
 }
 
+// CRUD Actions
 function viewUser(id) {
     const user = loadUsers().find(u => u.id === id);
     openModal(`Overview: ${user.name}`, `
@@ -85,10 +91,11 @@ function deleteUser(id) {
     if(confirm("Confirm deletion?")) {
         const updated = loadUsers().filter(u => u.id !== id);
         saveUsers(updated);
-        handleSearch(); 
+        handleSearch(); // Refresh current view
     }
 }
 
+// Modal Control
 function openModal(title, content) {
     document.getElementById('modal-title').innerText = title;
     document.getElementById('modal-body').innerHTML = content;
@@ -96,7 +103,9 @@ function openModal(title, content) {
 }
 function closeModal() { document.getElementById('modal').classList.add('hidden'); }
 
+// Init
 window.onload = () => {
-
+    // If you need a fresh start with 10 items, uncomment below once:
+    // localStorage.removeItem(STORAGE_KEY); 
     renderTable(loadUsers());
 };
